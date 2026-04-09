@@ -6,7 +6,7 @@
   <title>High Street Co. LLC</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -14,7 +14,9 @@
   <!-- Nav -->
   <nav class="nav">
     <div class="nav-inner">
-      <a href="#" class="nav-logo">High Street Co.</a>
+      <a href="#" class="nav-logo">
+        <img src="images/logo.png" alt="High Street Co." class="nav-logo-img">
+      </a>
       <div class="nav-links">
         <a href="#about">About</a>
         <a href="#projects">Projects</a>
@@ -28,8 +30,9 @@
 
   <!-- Hero -->
   <section class="hero">
+    <div class="hero-overlay"></div>
     <div class="hero-content">
-      <h1>High Street Co.<span class="llc">LLC</span></h1>
+      <img src="images/logo.png" alt="High Street Co." class="hero-logo">
       <p class="hero-tagline">Hobbies worth building around.</p>
       <p class="hero-sub">Trading cards, video games, birding, and the projects that bring them together.</p>
       <a href="#projects" class="btn">See What We're Building</a>
@@ -40,27 +43,30 @@
   <section id="about" class="section about">
     <div class="container">
       <h2>About</h2>
-      <div class="about-grid">
+      <div class="about-intro">
+        <div class="about-photo">
+          <img src="images/trev-sign.png" alt="Trev — Founder">
+        </div>
         <div class="about-text">
           <p>High Street Co. is a small LLC built around the hobbies we love. From buying and selling trading cards and video games to building apps for the birding community — if it starts as a passion, we turn it into something real.</p>
           <p>We believe the best products come from people who actually use them. Every project under High Street Co. is something we'd want to exist whether we built it or not.</p>
         </div>
-        <div class="about-cards">
-          <div class="card">
-            <div class="card-icon">&#127183;</div>
-            <h3>Trading Cards & TCG</h3>
-            <p>Buying, selling, and collecting across Pokemon, sports, and more.</p>
-          </div>
-          <div class="card">
-            <div class="card-icon">&#127918;</div>
-            <h3>Video Games</h3>
-            <p>Retro and modern — the hobby that started it all.</p>
-          </div>
-          <div class="card">
-            <div class="card-icon">&#129413;</div>
-            <h3>Birding</h3>
-            <p>Where nature meets tech. Identifying birds one feather at a time.</p>
-          </div>
+      </div>
+      <div class="about-cards">
+        <div class="card">
+          <div class="card-icon">&#127183;</div>
+          <h3>Trading Cards & TCG</h3>
+          <p>Buying, selling, and collecting across Pokemon, sports, and more.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon">&#127918;</div>
+          <h3>Video Games</h3>
+          <p>Retro and modern — the hobby that started it all.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon">&#129413;</div>
+          <h3>Birding</h3>
+          <p>Where nature meets tech. Identifying birds one feather at a time.</p>
         </div>
       </div>
     </div>
@@ -71,8 +77,11 @@
     <div class="container">
       <h2>Projects</h2>
       <div class="project-card">
-        <div class="project-badge">Live on TestFlight</div>
+        <div class="project-image">
+          <img src="images/birds-banner.png" alt="Quill — Bird Feather ID">
+        </div>
         <div class="project-body">
+          <div class="project-badge">Live on TestFlight</div>
           <h3>Quill: Bird Feather ID</h3>
           <p class="project-desc">An AI-powered mobile app that identifies bird species from feather photos. Snap a photo, get an instant match from 123+ species — then track your finds, compete in daily challenges, and connect with other birders.</p>
           <div class="project-features">
@@ -102,7 +111,8 @@
 
   <!-- Footer -->
   <footer class="footer">
-    <div class="container">
+    <div class="container footer-inner">
+      <img src="images/logo.png" alt="High Street Co." class="footer-logo">
       <p>&copy; 2026 High Street Co. LLC. All rights reserved.</p>
     </div>
   </footer>
@@ -131,6 +141,12 @@
         const target = document.querySelector(a.getAttribute('href'));
         if (target) target.scrollIntoView({ behavior: 'smooth' });
       });
+    });
+
+    // Nav background on scroll
+    const nav = document.querySelector('.nav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 50);
     });
   </script>
 
