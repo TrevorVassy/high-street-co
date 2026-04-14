@@ -478,6 +478,17 @@ h1, h2, h3 {
   font-size: 13px;
 }
 
+.footer-link {
+  color: var(--brown-light);
+  font-size: 13px;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.footer-link:hover {
+  color: var(--gold);
+}
+
 /* === Mobile === */
 @media (max-width: 768px) {
   .nav-toggle { display: flex; }
