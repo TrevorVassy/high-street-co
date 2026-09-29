@@ -70,8 +70,9 @@ p{margin:0}
 .slab{position:absolute;left:6%;top:30px;width:300px;height:470px;border-radius:18px;background:var(--panel);border:2px solid var(--cyan);box-shadow:0 0 40px rgba(82,227,255,.35);transform:rotate(-7deg);padding:16px;display:flex;flex-direction:column;gap:12px}
 .slab-label{height:70px;border-radius:8px;background:var(--ink);color:var(--night);display:flex;flex-direction:column;justify-content:center;padding:0 14px}
 .slab-label b{font-size:15px}.slab-label span{font-size:13px}
-.slab-photo{flex:1;border-radius:8px;background:var(--panel-2);overflow:hidden;display:grid;place-items:center;color:var(--muted);font-size:15px;text-align:center;padding:20px}
-.slab-photo img{width:100%;height:100%;object-fit:cover}
+.slab-photo{flex:1;border-radius:8px;overflow:hidden;position:relative;background:linear-gradient(145deg,#1a0533 0%,#2d0b54 25%,#6b21a8 50%,#2d0b54 75%,#1a0533 100%)}
+.slab-photo::before{content:"";position:absolute;inset:0;pointer-events:none;background:repeating-linear-gradient(105deg,transparent 0 18px,rgba(255,255,255,.04) 18px 19px),linear-gradient(210deg,rgba(255,255,255,.22) 0%,transparent 38%,transparent 62%,rgba(255,255,255,.1) 100%)}
+.slab-photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 .cart{position:absolute;left:44%;top:150px;width:260px;transform:rotate(6deg);display:flex;flex-direction:column;align-items:center;filter:drop-shadow(0 24px 40px rgba(0,0,0,.5))}
 .cart-body{width:260px;height:250px;background:#CFCBC4;border-radius:10px 10px 4px 4px;padding:18px 22px;display:flex;flex-direction:column;gap:8px}
 .cart-ridge{height:8px;border-radius:4px;background:#A9A5A0}
@@ -163,6 +164,39 @@ footer .brand-name{color:var(--ink);font-size:17px}
 footer nav{display:flex;gap:24px;flex-wrap:wrap}
 footer a{color:var(--muted)}
 
+/* store cards */
+.store-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.store-card{border-radius:24px;overflow:hidden;text-decoration:none;display:flex;flex-direction:column;transition:transform .2s ease,box-shadow .2s ease}
+.store-card:hover{transform:translateY(-6px)}
+.store-visual{height:220px;position:relative;overflow:hidden;display:grid;place-items:center}
+.store-body{padding:32px 36px 40px;display:flex;flex-direction:column;gap:12px;flex:1}
+.store-body h3{font-family:var(--display);font-weight:400;font-size:clamp(36px,3.2vw,50px);line-height:.95;margin:0}
+.store-body p{line-height:1.45}
+.store-go{font-weight:800;text-decoration:underline;margin-top:6px;display:block}
+/* cards store */
+.store-card-cards{background:var(--cyan);color:var(--night)}
+.store-card-cards .store-body p{font-weight:600}
+.store-card-cards:hover{box-shadow:0 0 44px rgba(82,227,255,.55)}
+.cards-visual{background:linear-gradient(155deg,#3dd8f5 0%,#52E3FF 50%,#7aeeff 100%)}
+.cfan{position:relative;width:190px;height:145px}
+.cfan-c{position:absolute;bottom:0;width:90px;height:130px;border-radius:10px;box-shadow:0 6px 18px rgba(0,0,0,.2)}
+.cfan-l{left:0;transform:rotate(-20deg);transform-origin:bottom center;background:linear-gradient(145deg,#e8f4ff,#fff)}
+.cfan-m{left:50px;transform:rotate(-4deg);transform-origin:bottom center;background:#fff}
+.cfan-r{left:100px;transform:rotate(14deg);transform-origin:bottom center;background:linear-gradient(145deg,#fff,#fff7eb)}
+/* retro store */
+.store-card-retro{border:2px solid var(--line)}
+.store-card-retro .store-body{background:var(--panel);color:var(--ink)}
+.store-card-retro h3,.store-card-retro .store-go{color:var(--sticker)}
+.store-card-retro p{color:var(--ink-soft)}
+.store-card-retro:hover{box-shadow:0 0 44px rgba(255,210,63,.4)}
+.retro-visual{background:linear-gradient(155deg,#f5c800 0%,#FFD23F 50%,#ffe06b 100%)}
+.rcart{display:flex;flex-direction:column;align-items:center;filter:drop-shadow(0 10px 22px rgba(0,0,0,.32))}
+.rcart-notch{width:110px;height:16px;background:var(--sticker-ink);border-radius:6px 6px 0 0}
+.rcart-body{width:160px;height:112px;background:var(--sticker-ink);display:grid;place-items:center;padding:10px}
+.rcart-inner{border:2px solid rgba(255,210,63,.3);border-radius:6px;width:100%;height:100%;display:grid;place-items:center}
+.rcart-label{font-family:var(--display);font-size:20px;color:var(--sticker);text-align:center;line-height:1.1}
+.rcart-foot{width:118px;height:20px;background:var(--sticker-ink);border-radius:0 0 8px 8px}
+
 /* tablet */
 @media (max-width:1080px){
   .worlds{grid-template-columns:1fr 1fr}
@@ -201,6 +235,8 @@ footer a{color:var(--muted)}
   .sell{grid-template-columns:1fr;border-radius:24px}
   .sell-cta{align-items:stretch}
   footer{flex-direction:column;align-items:flex-start}
+  .store-grid{grid-template-columns:1fr}
+  .store-visual{height:180px}
 }
 @media (prefers-reduced-motion:reduce){
   *{animation:none!important;transition:none!important}
@@ -270,7 +306,7 @@ footer a{color:var(--muted)}
       </a>
       <a class="world world-retro" href="https://ebay.us/m/talonC" target="_blank" rel="noopener">
         <h3>Retro<br>games</h3>
-        <div><p>Game Boy, NES and more. Cleaned, tested and ready to play at High Street Retro.</p><p class="go">Shop retro on eBay</p></div>
+        <div><p>Game Boy, NES, SNES and more. Cleaned, tested and ready to play at High Street Retro.</p><p class="go">Shop retro on eBay</p></div>
       </a>
       <a class="world world-bird" href="#quill">
         <h3>Birding</h3>
@@ -287,9 +323,12 @@ footer a{color:var(--muted)}
       <div><a class="btn btn-accent" href="https://www.whatnot.com/user/highstreet_asylum" target="_blank" rel="noopener">Follow @highstreet_asylum</a></div>
     </div>
     <div class="live-side">
-      <div class="label">Find us on Whatnot</div>
-      <p style="color:var(--ink-soft);font-size:17px;line-height:1.5">Follow <strong style="color:var(--ink)">@highstreet_asylum</strong> to get notified the moment we go live.</p>
-      <a class="btn btn-accent" href="https://www.whatnot.com/user/highstreet_asylum" target="_blank" rel="noopener" style="align-self:flex-start">Follow on Whatnot</a>
+      <div class="label">Where to watch</div>
+      <div class="show">
+        <div><b>Whatnot</b><span>@highstreet_asylum</span></div>
+        <em style="color:var(--accent)">Live</em>
+      </div>
+      <p class="fine">Turn on Whatnot notifications to catch every pack break, retro auction and surprise drop the moment it goes live.</p>
     </div>
   </section>
 
@@ -298,14 +337,34 @@ footer a{color:var(--muted)}
       <h2 id="shop-h">Fresh on<br>the shelf</h2>
       <p>Browse both stores on eBay — new listings added regularly.</p>
     </div>
-    <div class="worlds" style="grid-template-columns:1fr 1fr">
-      <a class="world world-cards" href="https://ebay.us/m/85rxMV" target="_blank" rel="noopener">
-        <h3>Trading<br>cards</h3>
-        <div><p>Pokémon, TCG and sports. Singles, sealed product and slabs.</p><p class="go">Shop cards on eBay →</p></div>
+    <div class="store-grid">
+      <a class="store-card store-card-cards" href="https://ebay.us/m/85rxMV" target="_blank" rel="noopener">
+        <div class="store-visual cards-visual" aria-hidden="true">
+          <div class="cfan">
+            <div class="cfan-c cfan-l"></div>
+            <div class="cfan-c cfan-m"></div>
+            <div class="cfan-c cfan-r"></div>
+          </div>
+        </div>
+        <div class="store-body">
+          <h3>Trading<br>cards</h3>
+          <p>Pokémon, TCG and sports. Singles, sealed product and slabs.</p>
+          <span class="store-go">Shop cards on eBay →</span>
+        </div>
       </a>
-      <a class="world world-retro" href="https://ebay.us/m/talonC" target="_blank" rel="noopener">
-        <h3>Retro<br>games</h3>
-        <div><p>Game Boy, NES and more. Cleaned, tested and ready to play.</p><p class="go">Shop retro on eBay →</p></div>
+      <a class="store-card store-card-retro" href="https://ebay.us/m/talonC" target="_blank" rel="noopener">
+        <div class="store-visual retro-visual" aria-hidden="true">
+          <div class="rcart">
+            <div class="rcart-notch"></div>
+            <div class="rcart-body"><div class="rcart-inner"><span class="rcart-label">High Street<br>Retro</span></div></div>
+            <div class="rcart-foot"></div>
+          </div>
+        </div>
+        <div class="store-body">
+          <h3>Retro<br>games</h3>
+          <p>Game Boy, NES, SNES and more. Cleaned, tested and ready to play.</p>
+          <span class="store-go">Shop retro on eBay →</span>
+        </div>
       </a>
     </div>
   </section>
